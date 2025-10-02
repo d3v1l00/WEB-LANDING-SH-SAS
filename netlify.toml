@@ -1,0 +1,11 @@
+# Netlify configuration
+# Ensures Vite SPA works and previews deploy properly
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirect all routes to index.html for SPA behavior
+[[redirects]]
+  from = "/**"
+  to = "/index.html"
+  status = 200

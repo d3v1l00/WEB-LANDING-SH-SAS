@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Estructuras y Montajes SH SAS - Especialistas en infraestructura eléctrica, construcción de torres de transmisión hasta 500 kV, cimentaciones y telecomunicaciones en Colombia." />
+    <meta name="keywords" content="infraestructura eléctrica, torres de transmisión, cimentaciones, líneas de transmisión, telecomunicaciones, construcción eléctrica, Colombia, Medellín" />
+    <title>Estructuras y Montajes SH SAS - Infraestructura Eléctrica en Colombia</title>
+    <script>
+            // Forzar scroll al top inmediatamente
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
+      
+      function scrollToTop() {
+        try {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          if (document.documentElement) {
+            document.documentElement.scrollTop = 0;
+          }
+          if (document.body) {
+            document.body.scrollTop = 0;
+          }
+        } catch (error) {
+          console.warn('Scroll error:', error);
+        }
+      }
+      
+      // Ejecutar inmediatamente
+      scrollToTop();
+      
+      // Al cargar completamente
+      window.addEventListener('load', function() {
+        scrollToTop();
+        setTimeout(scrollToTop, 10);
+        setTimeout(scrollToTop, 100);
+      });
+      
+      // Antes de salir
+      window.addEventListener('beforeunload', scrollToTop);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Script final para asegurar scroll top
+      window.addEventListener('DOMContentLoaded', function() {
+        // Último intento de forzar scroll al top
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }, 0);
+      });
+    </script>
+  </body>
+</html>

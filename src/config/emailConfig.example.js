@@ -1,0 +1,1 @@
+// Eliminado: ejemplo de EmailJS (no se usa). Este archivo queda vacío intencionalmente.
