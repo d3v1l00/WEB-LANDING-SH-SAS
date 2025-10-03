@@ -345,48 +345,6 @@ const Contact = () => {
               Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.
             </p>
 
-            {/* Mensaje de estado del formulario */}
-            {formStatus.status && (
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                role="alert"
-                aria-live="polite"
-                style={{
-                  padding: '1rem',
-                  borderRadius: '8px',
-                  marginBottom: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  backgroundColor: formStatus.status === 'success' 
-                    ? 'var(--light-blue)' 
-                    : formStatus.status === 'error' 
-                    ? '#fee2e2' 
-                    : 'var(--gray-100)',
-                  color: formStatus.status === 'success' 
-                    ? 'var(--primary-blue)' 
-                    : formStatus.status === 'error' 
-                    ? '#dc2626' 
-                    : 'var(--gray-600)'
-                }}
-              >
-                {formStatus.status === 'success' && <CheckCircle size={20} />}
-                {formStatus.status === 'error' && <AlertCircle size={20} />}
-                {formStatus.status === 'sending' && (
-                  <div style={{
-                    width: '20px',
-                    height: '20px',
-                    border: '2px solid var(--gray-300)',
-                    borderTop: '2px solid var(--primary-blue)',
-                    borderRadius: '50%',
-                    animation: 'spin 1s linear infinite'
-                  }} />
-                )}
-                <span>{formStatus.message}</span>
-              </motion.div>
-            )}
-
             <form 
               onSubmit={handleSubmit} 
               aria-label="Formulario de contacto"
@@ -733,6 +691,55 @@ const Contact = () => {
                   </>
                 )}
               </button>
+
+              {/* Mensaje de estado del formulario (abajo) */}
+              {formStatus.status && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  role="alert"
+                  aria-live="polite"
+                  style={{
+                    padding: '1rem',
+                    borderRadius: '8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    backgroundColor:
+                      formStatus.status === 'success'
+                        ? '#dcfce7' // verde claro
+                        : formStatus.status === 'error'
+                        ? '#fee2e2' // rojo claro
+                        : 'var(--gray-100)', // neutro
+                    color:
+                      formStatus.status === 'success'
+                        ? '#166534' // verde oscuro
+                        : formStatus.status === 'error'
+                        ? '#dc2626' // rojo
+                        : 'var(--gray-600)',
+                    border:
+                      formStatus.status === 'success'
+                        ? '1px solid #86efac'
+                        : formStatus.status === 'error'
+                        ? '1px solid #fecaca'
+                        : '1px solid var(--gray-200)'
+                  }}
+                >
+                  {formStatus.status === 'success' && <CheckCircle size={20} />}
+                  {formStatus.status === 'error' && <AlertCircle size={20} />}
+                  {formStatus.status === 'sending' && (
+                    <div style={{
+                      width: '20px',
+                      height: '20px',
+                      border: '2px solid var(--gray-300)',
+                      borderTop: '2px solid var(--primary-blue)',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite'
+                    }} />
+                  )}
+                  <span>{formStatus.message}</span>
+                </motion.div>
+              )}
             </form>
           </motion.div>
         </div>

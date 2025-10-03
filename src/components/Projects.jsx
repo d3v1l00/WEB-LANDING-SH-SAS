@@ -399,13 +399,16 @@ const Projects = () => {
                   overflow: 'hidden',
                   boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
                   border: '1px solid var(--gray-200)',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%'
                 }}
                 onClick={() => openProject(project)}
               >
                 {/* Imagen del proyecto */}
                 <div style={{
-                  height: '250px',
+                  height: '260px',
                   backgroundColor: 'var(--gray-100)',
                   position: 'relative',
                   overflow: 'hidden'
@@ -501,7 +504,7 @@ const Projects = () => {
                 </div>
 
                 {/* Contenido */}
-                <div style={{ padding: '2rem' }}>
+                <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -538,18 +541,11 @@ const Projects = () => {
                   </p>
 
                   <div style={{
+                    marginTop: 'auto',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between'
+                    justifyContent: 'flex-end'
                   }}>
-                    <div style={{
-                      fontSize: '0.875rem',
-                      color: 'var(--primary-blue)',
-                      fontWeight: '600'
-                    }}>
-                      {project.client}
-                    </div>
-
                     <motion.div
                       whileHover={{ x: 5 }}
                       style={{

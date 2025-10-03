@@ -262,11 +262,12 @@ const Certifications = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           style={{
             textAlign: 'center',
-            marginTop: '3rem',
-            padding: '2rem',
+            margin: '4rem auto 0 auto',
+            padding: '2.5rem',
             backgroundColor: 'var(--white)',
             borderRadius: '15px',
-            border: '1px solid var(--gray-200)'
+            border: '1px solid var(--gray-200)',
+            maxWidth: '900px'
           }}
         >
           <Shield size={32} style={{ color: 'var(--primary-blue)', marginBottom: '1rem' }} />
@@ -280,7 +281,8 @@ const Certifications = () => {
           </h4>
           <p style={{
             color: 'var(--gray-600)',
-            fontSize: '0.875rem'
+            fontSize: '0.95rem',
+            lineHeight: 1.7
           }}>
             Todos nuestros proyectos se ejecutan bajo los más altos estándares de calidad, 
             seguridad y responsabilidad ambiental certificados internacionalmente.

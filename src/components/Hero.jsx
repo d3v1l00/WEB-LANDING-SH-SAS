@@ -35,7 +35,7 @@ const Hero = () => {
   };
 
   const stats = [
-    { icon: <Zap />, number: "30+", label: "Años de Experiencia" },
+    { icon: <Zap />, number: "3", label: "Años de Experiencia" },
     { icon: <Shield />, number: "500kV", label: "Hasta 500kV" },
     { icon: <Award />, number: "100%", label: "Proyectos Exitosos" },
     { icon: <Users />, number: "50+", label: "Profesionales" }
@@ -175,7 +175,7 @@ const Hero = () => {
               }}
             >
               Especialistas en infraestructura eléctrica de alta tensión. 
-              Más de 30 años de experiencia en construcción de torres de transmisión hasta 500kV.
+              Contamos con 3 años de experiencia en construcción de torres de transmisión hasta 500kV.
             </motion.p>
 
             <motion.div

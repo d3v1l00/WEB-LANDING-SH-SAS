@@ -13,7 +13,8 @@ import {
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Desplaza hasta la sección de inicio con el mismo offset del header
+    scrollToSection('#inicio');
   };
 
   const scrollToSection = (href) => {
@@ -149,7 +150,7 @@ const Footer = () => {
                   fontSize: '1rem'
                 }}
               >
-                Somos especialistas en ingeniería eléctrica con más de 30 años de experiencia, 
+                Somos especialistas en ingeniería eléctrica con 3 años de experiencia, 
                 comprometidos con el progreso del país, cuidando el medio ambiente y la seguridad 
                 de nuestra gente.
               </motion.p>
@@ -394,7 +395,6 @@ const Footer = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               href="#contacto"
-              onClick={(e) => { e.preventDefault(); scrollToSection('#contacto'); }}
               style={{
                 backgroundColor: 'var(--white)',
                 color: 'var(--primary-blue)',

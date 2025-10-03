@@ -32,21 +32,18 @@ const About = () => {
       icon: <Lightbulb size={24} />,
       title: "Ingeniería",
       description: "Profesionales en ingeniería eléctrica",
-      experience: "30+ años de experiencia",
       highlight: "Sector eléctrico especializado"
     },
     {
       icon: <Shield size={24} />,
       title: "Técnicos",
       description: "Profesionales certificados (CONTE)",
-      experience: "8+ años de experiencia",
       highlight: "Líneas de transmisión 115, 230 y 500 kV"
     },
     {
       icon: <Users size={24} />,
       title: "Logística y Administración",
       description: "Especialistas en SST",
-      experience: "12+ años de experiencia",
       highlight: "Equipos y herramientas especializadas"
     }
   ];
@@ -295,14 +292,7 @@ const About = () => {
                   {professional.description}
                 </p>
 
-                <div style={{
-                  fontSize: '0.875rem',
-                  fontWeight: '600',
-                  color: 'var(--primary-blue)',
-                  marginBottom: '0.5rem'
-                }}>
-                  {professional.experience}
-                </div>
+                {/* Experiencia por rol eliminada según requerimiento */}
 
                 <div style={{
                   fontSize: '0.875rem',
