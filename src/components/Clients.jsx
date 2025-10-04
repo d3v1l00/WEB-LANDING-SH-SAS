@@ -40,6 +40,12 @@ const Clients = () => {
       logo: "LOGO-IDJ",
       description: "Ingeniería y construcción eléctrica",
       projects: "1"
+    },
+    {
+      name: "GTA COLOMBIA S.A.S",
+      logo: "LOGO-GTA",
+      description: "Construcción, montaje, reparación y mantenimiento de obras de ingeniería eléctrica y civiles. Compromiso con la calidad y la satisfacción de las partes interesadas.",
+      projects: "1"
     }
   ];
 
