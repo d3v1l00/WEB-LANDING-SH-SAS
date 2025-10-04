@@ -50,9 +50,9 @@ const Header = () => {
       }}>
         <div className="container-full flex-between">
           <div className="flex" style={{ 
-            gap: isMobile ? '1rem' : '1.5rem',
-            flexDirection: isMobile ? 'column' : 'row',
-            alignItems: isMobile ? 'flex-start' : 'center'
+            gap: isMobile ? '1.2rem' : '1.5rem',
+            flexDirection: 'row',
+            alignItems: 'center'
           }}>
             <div className="flex" style={{ alignItems: 'center', gap: '0.5rem' }}>
               <Phone size={isMobile ? 12 : 14} />
@@ -61,10 +61,10 @@ const Header = () => {
             <div className="flex" style={{ 
               alignItems: 'center', 
               gap: '0.5rem',
-              display: isMobile ? 'none' : 'flex' // Ocultar email en móvil para ahorrar espacio
+              display: 'flex'
             }}>
-              <Mail size={14} />
-              <span>estructurasymontajesshsas@gmail.com</span>
+              <Mail size={isMobile ? 12 : 14} />
+              <span style={{ fontSize: isMobile ? '0.7rem' : 'inherit' }}>estructurasymontajesshsas@gmail.com</span>
             </div>
           </div>
           <div style={{ display: 'none' }}>

@@ -12,20 +12,11 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  // Scroll to top real, máxima compatibilidad
   const scrollToTop = () => {
-    // Desplaza hasta la sección de inicio con el mismo offset del header
-    scrollToSection('#inicio');
-  };
-
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const headerHeight = 120; // Altura del header fijo
-      const rect = element.getBoundingClientRect();
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const targetY = rect.top + scrollTop - headerHeight;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   };
 
   const quickLinks = [
@@ -422,13 +413,16 @@ const Footer = () => {
 
         {/* Footer inferior */}
         <div className="container-full" style={{ padding: '2rem' }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '1rem',
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -436,10 +430,12 @@ const Footer = () => {
               viewport={{ once: true }}
               style={{
                 color: 'rgba(255, 255, 255, 0.7)',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                flex: 1,
+                textAlign: 'left',
               }}
             >
-              © 2024 Estructuras y Montajes SH SAS. Todos los derechos reservados.
+              © 2025 Estructuras y Montajes SH S.A.S. Todos los derechos reservados.
             </motion.div>
 
             <motion.div
@@ -450,12 +446,16 @@ const Footer = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '1rem'
+                gap: '1rem',
+                flex: 1,
+                justifyContent: 'flex-end',
               }}
             >
               <div style={{
                 color: 'rgba(255, 255, 255, 0.7)',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                textAlign: 'right',
+                flex: 1,
               }}>
                 Medellín, Antioquia - Colombia
               </div>
@@ -477,7 +477,8 @@ const Footer = () => {
                   justifyContent: 'center',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(30, 64, 175, 0.3)'
+                  boxShadow: '0 4px 15px rgba(30, 64, 175, 0.3)',
+                  marginLeft: '8px',
                 }}
               >
                 <ArrowUp size={20} />

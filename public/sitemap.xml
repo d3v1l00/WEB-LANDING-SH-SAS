@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.estructurasymontajesshsas.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.estructurasymontajesshsas.com/#nosotros</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.estructurasymontajesshsas.com/#certificaciones</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.estructurasymontajesshsas.com/#servicios</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.estructurasymontajesshsas.com/#proyectos</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.estructurasymontajesshsas.com/#contacto</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -49,16 +49,28 @@ const Projects = () => {
   // Componente de slideshow para imágenes múltiples
   const ProjectSlideshow = ({ images, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+const [intervalTime, setIntervalTime] = useState(2000);
 
-    useEffect(() => {
-      if (images.length > 1) {
-        const interval = setInterval(() => {
-          setCurrentIndex(prev => (prev + 1) % images.length);
-        }, 2000);
-        
-        return () => clearInterval(interval);
-      }
-    }, [images.length]);
+useEffect(() => {
+  if (images.length > 1) {
+    let time = 2000;
+    if (title && title.toLowerCase().includes('g.t.a')) {
+      time = Math.floor(Math.random() * 2000) + 2000; // 2000-4000ms
+    } else if (title && title.toLowerCase().includes('instelec')) {
+      time = 4000;
+    }
+    setIntervalTime(time);
+  }
+}, [images.length, title]);
+
+useEffect(() => {
+  if (images.length > 1) {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % images.length);
+    }, intervalTime);
+    return () => clearInterval(interval);
+  }
+}, [images.length, intervalTime]);
 
     return (
       <div style={{
@@ -105,7 +117,9 @@ const Projects = () => {
                   } else if (e.target.src.includes('.png')) {
                     e.target.src = `${imagePath}.jpeg`;
                   } else if (e.target.src.includes('.jpeg')) {
-                    e.target.src = `${imagePath}.webp`;
+                    e.target.src = `${imagePath}.jfif`;
+                  } else if (e.target.src.includes('.jfif')) {
+                    e.target.src = `${imagePath}.jpg`;
                   } else {
                     e.target.style.display = 'none';
                   }
@@ -189,6 +203,27 @@ const Projects = () => {
       category: "Transmisión"
     },
     {
+      id: 100,
+      title: "G.T.A – Sabana de Torres",
+      year: "2025",
+      client: "GTA",
+      location: "Sabana de Torres, Colombia",
+      voltage: "En Ejecución",
+      description: "Sin información por el momento.",
+      details: "No hay información para mostrar.",
+      scope: [],
+      images: [
+        "/images/projects/FOTO0",
+        "/images/projects/FOTO1",
+        "/images/projects/FOTO2",
+        "/images/projects/FOTO3",
+        "/images/projects/FOTO4"
+      ],
+      hasSlideshow: true,
+      category: "En Ejecución",
+      inProgress: true
+    },
+    {
       id: 2,
       title: "SABO (Sabanalarga-Bolívar) 500 kV – INSTELEC SAS",
       year: "2022",
@@ -207,24 +242,6 @@ const Projects = () => {
       category: "Alta Tensión"
     },
     {
-      id: 3,
-      title: "Hidroituango Medellín",
-      year: "2023-2024",
-      client: "Hidroituango",
-      location: "Medellín, Antioquia",
-      voltage: "110-500 kV",
-      description: "Subcontratista para montaje y tendido de torres de energía de 110 a 500 kV.",
-      details: "Participación como subcontratista especializado en uno de los proyectos hidroeléctricos más importantes de Colombia, trabajando con diferentes niveles de tensión.",
-      scope: [
-        "Múltiples niveles de tensión",
-        "Montaje y tendido",
-        "Proyecto hidroeléctrico",
-        "Trabajo en equipo multidisciplinario"
-      ],
-      image: "/images/projects/proyecto-hidroituango",
-      category: "Hidroeléctrico"
-    },
-    {
       id: 4,
       title: "EQUANS – Guadueros-Dorada 115 kV",
       year: "2023-2024",
@@ -239,7 +256,7 @@ const Projects = () => {
         "Logística compleja",
         "Cumplimiento de cronograma"
       ],
-      image: "/images/projects/proyecto-equans",
+        image: "/images/projects/proyecto-hidroituango",
       category: "Transmisión"
     },
     {
@@ -260,32 +277,14 @@ const Projects = () => {
       image: "/images/projects/proyecto-insitel-telecomunicaciones",
       category: "Telecomunicaciones"
     },
-    {
-      id: 6,
-      title: "IDJ 230 kV – Puerta de Oro – San Felipe",
-      year: "2024 - Actual",
-      client: "IDJ",
-      location: "Puerta de Oro – San Felipe",
-      voltage: "230 kV",
-      description: "Construcción de cimentaciones y montaje de torre de transmisión de energía de 230 kV.",
-      details: "Proyecto en curso que representa nuestra capacidad actual en el manejo de proyectos de media-alta tensión con cimentaciones especializadas.",
-      scope: [
-        "Torre 230 kV",
-        "Cimentaciones especializadas",
-        "Proyecto en ejecución",
-        "Tecnología avanzada"
-      ],
-      image: "/images/projects/proyecto-idj-sas",
-      category: "En Ejecución"
-    }
   ];
 
   const categories = ["Todos", "Transmisión", "Alta Tensión", "Telecomunicaciones", "Hidroeléctrico", "En Ejecución"];
   const [activeCategory, setActiveCategory] = useState("Todos");
 
   const filteredProjects = activeCategory === "Todos" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+  ? [...projects.filter(p => p.inProgress), ...projects.filter(p => !p.inProgress)]
+  : projects.filter(project => project.category === activeCategory);
 
   return (
   <section id="proyectos" className="section section-alt" style={{ scrollMarginTop: '140px' }}>
@@ -458,15 +457,45 @@ const Projects = () => {
                     alignItems: 'flex-start'
                   }}>
                     <div style={{
-                      backgroundColor: 'var(--white)',
-                      color: 'var(--primary-blue)',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '12px',
-                      fontSize: '0.875rem',
-                      fontWeight: '600',
-                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
                     }}>
-                      {project.voltage}
+                      {project.inProgress ? (
+                        <span style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          fontWeight: '600',
+                          fontSize: '0.875rem',
+                          color: '#16a34a', // verde
+                          backgroundColor: 'var(--white)',
+                          padding: '0.5rem 1rem',
+                          borderRadius: '12px',
+                          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                        }}>
+                          <span style={{
+                            width: '10px',
+                            height: '10px',
+                            borderRadius: '50%',
+                            background: '#16a34a', // verde
+                            boxShadow: '0 0 8px #16a34a',
+                            animation: 'blink 1s infinite'
+                          }} />
+                          En Ejecución
+                          <style>{`@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; }}`}</style>
+                        </span>
+                      ) : (
+                        <span style={{
+                          fontWeight: '600',
+                          fontSize: '0.875rem',
+                          color: 'var(--primary-blue)',
+                          backgroundColor: 'var(--white)',
+                          padding: '0.5rem 1rem',
+                          borderRadius: '12px',
+                          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                        }}>{project.voltage}</span>
+                      )}
                     </div>
 
                     <div style={{

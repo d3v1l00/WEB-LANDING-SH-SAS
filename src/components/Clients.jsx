@@ -44,7 +44,7 @@ const Clients = () => {
     {
       name: "GTA COLOMBIA S.A.S",
       logo: "LOGO-GTA",
-      description: "Construcción, montaje, reparación y mantenimiento de obras de ingeniería eléctrica y civiles. Compromiso con la calidad y la satisfacción de las partes interesadas.",
+      description: "Obras eléctricas y civiles, calidad y experiencia.",
       projects: "1"
     }
   ];
@@ -259,14 +259,9 @@ const Clients = () => {
                       filter: 'contrast(1.1) saturate(1.1)'
                     }}
                     onError={(e) => {
-                      // Fallback para diferentes extensiones basado en el nombre del logo
-                      const logoName = client.logo;
+                      // Fallback para diferentes extensiones
                       if (e.target.src.includes('.jpg')) {
-                        if (logoName === 'LOGO-INSITEL' || logoName === 'LOGO-IDJ') {
-                          e.target.src = `/images/clients/${client.logo}.png`;
-                        } else {
-                          e.target.src = `/images/clients/${client.logo}.svg`;
-                        }
+                        e.target.src = `/images/clients/${client.logo}.png`;
                       } else if (e.target.src.includes('.png')) {
                         e.target.src = `/images/clients/${client.logo}.svg`;
                       } else {
